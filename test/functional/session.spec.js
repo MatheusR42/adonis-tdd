@@ -7,6 +7,7 @@ const Factory = use("Factory");
 const User = use("App/Models/User");
 
 trait("Test/ApiClient");
+trait("DatabaseTransactions");
 
 test("it should return a JWT token when session is created", async ({
   assert,
@@ -17,10 +18,9 @@ test("it should return a JWT token when session is created", async ({
     password: "123456",
   };
 
-  const user = await Factory.model("App/Models/User").create(userLogin);
+  await Factory.model("App/Models/User").create(userLogin);
 
   const response = await client.post("/sessions").send(userLogin).end();
-  console.log(response.body);
   response.assertStatus(200);
   assert.exists(response.body.token);
 });
