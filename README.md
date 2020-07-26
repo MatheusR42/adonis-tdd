@@ -26,3 +26,23 @@ Run the following command to run startup migrations.
 ```js
 adonis migration:run
 ```
+
+## Commands
+
+### Config ESLint
+Install the dependencies
+```
+yarn add eslint prettier eslint-config-prettier eslint-plugin-prettier -D
+```
+
+Initialize ESLint
+```
+yarn eslint --init
+```
+
+Config the ```.prettierrc``` and ```.eslintrc.json``` files
+
+To fix all the files in a folder named "app"
+```
+yarn eslint --fix app --ext .js
+```
