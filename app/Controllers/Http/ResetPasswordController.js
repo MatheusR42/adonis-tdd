@@ -6,7 +6,7 @@ class ResetPasswordController {
   async store({ request, response }) {
     const { token, password } = request.only(['token', 'password']);
 
-    const userToken = await Token.findBy('token', token);
+    const userToken = await Token.findByOrFail('token', token);
 
     if (isBefore(parseISO(userToken.created_at), subHours(new Date(), 2))) {
       return response
