@@ -46,3 +46,20 @@ To fix all the files in a folder named "app"
 ```
 yarn eslint --fix app --ext .js
 ```
+
+### Create PostGres Database
+
+```
+docker network create --driver bridge postgres-network
+docker run --name rsxp --network=postgres-network  -p 5432:5432 -d -t kartoza/postgis
+docker run --name pgadmin --network=postgres-network  -p 15432:80 -e "PGADMIN_DEFAULT_EMAIL=test@test.com" -e "PGADMIN_DEFAULT_PASSWORD=123456" -d dpage/pgadmin4
+```
+
+Link de referência (não é exatamente igual, mas é parecido):
+https://medium.com/@renato.groffe/postgresql-docker-executando-uma-inst%C3%A2ncia-e-o-pgadmin-4-a-partir-de-containers-ad783e85b1a4
+
+To stop and remove all containers
+```
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+```
