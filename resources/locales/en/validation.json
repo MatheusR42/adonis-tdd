@@ -1,3 +1,4 @@
+
 {
   "above": "The {{field}} should be above {{argument.0}}.",
   "accepted": "The {{field}} should have been accepted",
@@ -16,8 +17,9 @@
   "different": "The {{field}} and {{argument.0}} should be different.",
   "email": "The {{field}} should be a valid email address.",
   "ends_with": "The {{field}} should end with given letters ({{argument}}).",
-  "equals": "The {{field}} should should equal {{argument.0}}.",
-  "exists": "The {{field}} should exists in table {{argument.0}}",
+  "equals": "The {{field}} should equal {{argument.0}}.",
+  "exists": "The {{field}} should exists in table {{argument.0}}.",
+  "file": "The {{field}} should contain a file.",
   "in": "The {{field}} should fall within defined values of ({{argument}}).",
   "includes": "The {{field}} should include define letters ({{argument}}).",
   "integer": "The {{field}} should be an INTEGER.",
@@ -27,6 +29,7 @@
   "json": "The {{field}} should be a valid JSON string.",
   "max": "The {{field}} should not be more than {{argument.0}}.",
   "min": "The {{field}} should not be less than {{argument.0}}.",
+  "not_contains_at_least": "The {{field}} array should contain at least {{argument.0}} item that's not {{argument.1}}.",
   "not_equals": "The {{field}} should be different than {{argument.0}}.",
   "not_in": "The {{field}} should not be one of ({{argument}}).",
   "object": "The {{field}} should be a valid OBJECT.",
@@ -44,5 +47,5 @@
   "string": "The {{field}} should be a STRING.",
   "under": "The {{field}} should be under {{argument.0}}.",
   "unique": "The {{field}} has already been taken by someone else.",
-  "url": "The {{field}} should be a valid URL."
+  "url": "The {{field}} should be a valid url."
 }
