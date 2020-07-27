@@ -63,3 +63,16 @@ To stop and remove all containers
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 ```
+
+### Creating model, migration and controller
+
+```
+adonis make:model Workshop -m -c
+```
+
+
+### Other cool commands
+```
+adonis make:validator Workshop
+adonis make:provider CustomValidation
+```
