@@ -6,6 +6,14 @@ class UserSchema extends Schema {
     this.create('users', (table) => {
       table.increments();
       table.string('name').notNullable();
+      table.string('title');
+      table
+        .integer('avatar')
+        .unsigned()
+        .references('id')
+        .inTable('files')
+        .onDelete('SET NULL') //se o arquivo for deletado aqui fica null
+        .onUpdate('CASCADE') //se o arquivo for alterado replica aqui
       table.string('bio');
       table.string('github');
       table.string('linkedin');
