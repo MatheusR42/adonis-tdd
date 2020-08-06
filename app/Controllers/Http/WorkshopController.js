@@ -12,6 +12,12 @@ class WorkshopController {
     return workshops;
   }
 
+  async show({ params }) {
+    const workshop = await Workshop.find(params.id);
+    await workshop.load('user');
+    return workshop;
+  }
+
   async store({ request, response }) {
     const data = request.only(['title', 'description', 'user_id', 'section']);
 

@@ -20,5 +20,6 @@ Route.post('/reset', 'ResetPasswordController.store').validator('Reset');
 
 Route.group(() => {
   Route.get('/workshops', 'WorkshopController.index');
+  Route.post('/workshops/:id', 'WorkshopController.show');
   Route.post('/workshops', 'WorkshopController.store').validator('Workshop');
 }).middleware('auth');

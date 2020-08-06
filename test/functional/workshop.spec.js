@@ -42,3 +42,18 @@ test('it should to list the workshops', async ({ client, assert }) => {
   assert.equal(response.body[0].title, workshop.title);
   assert.equal(response.body[0].user.id, user.id);
 });
+
+test('it should to list a single workshop', async ({ client, assert }) => {
+  const user = await Factory.model('App/Models/User').create();
+  const workshop = await Factory.model('App/Models/Workshop').create();
+  await user.workshops().save(workshop);
+
+  const response = await client
+    .get('/workshops/'+workshop.id)
+    .loginVia(user, 'jwt')
+    .end();
+
+  response.assertStatus(200);
+  assert.equal(response.body.title, workshop.title);
+  assert.equal(response.body.user.id, user.id);
+});

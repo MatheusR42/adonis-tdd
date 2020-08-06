@@ -36,6 +36,10 @@ class User extends Model {
   workshops() {
     return this.hasMany('App/Models/Workshop')
   }
+
+  static get hidden () {
+    return ['password', 'created_at', 'updated_at']
+  }
 }
 
 module.exports = User;
