@@ -14,12 +14,14 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
 
+Route.get('/files/:file', 'FileController.show');
 Route.post('/sessions', 'SessionController.store').validator('Session');
 Route.post('/forgot', 'ForgotPasswordController.store').validator('Forgot');
 Route.post('/reset', 'ResetPasswordController.store').validator('Reset');
 
 Route.group(() => {
+  Route.put('/profile', 'ProfileController.update');
   Route.get('/workshops', 'WorkshopController.index');
-  Route.post('/workshops/:id', 'WorkshopController.show');
+  Route.get('/workshops/:id', 'WorkshopController.show');
   Route.post('/workshops', 'WorkshopController.store').validator('Workshop');
 }).middleware('auth');

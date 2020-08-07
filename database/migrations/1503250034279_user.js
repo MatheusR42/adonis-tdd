@@ -7,13 +7,7 @@ class UserSchema extends Schema {
       table.increments();
       table.string('name').notNullable();
       table.string('title');
-      table
-        .integer('avatar')
-        .unsigned()
-        .references('id')
-        .inTable('files')
-        .onDelete('SET NULL') //se o arquivo for deletado aqui fica null
-        .onUpdate('CASCADE') //se o arquivo for alterado replica aqui
+      table.string('avatar');
       table.string('bio');
       table.string('github');
       table.string('linkedin');

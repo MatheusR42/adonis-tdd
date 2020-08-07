@@ -55,6 +55,8 @@ docker run --name rsxp --network=postgres-network  -p 5432:5432 -d -t kartoza/po
 docker run --name pgadmin --network=postgres-network  -p 15432:80 -e "PGADMIN_DEFAULT_EMAIL=test@test.com" -e "PGADMIN_DEFAULT_PASSWORD=123456" -d dpage/pgadmin4
 ```
 
+Admin: http://localhost:15432/
+
 Link de referência (não é exatamente igual, mas é parecido):
 https://medium.com/@renato.groffe/postgresql-docker-executando-uma-inst%C3%A2ncia-e-o-pgadmin-4-a-partir-de-containers-ad783e85b1a4
 
@@ -70,6 +72,16 @@ docker rm $(docker ps -a -q)
 adonis make:model Workshop -m -c
 ```
 
+## Create a user from command line
+
+```
+adonis repl
+```
+
+```js
+const User = use('App/Models/User')
+User.create({ name: "Matheus", email: "test@test.com", password: "1234" })
+```
 
 ### Other cool commands
 ```

@@ -4,6 +4,8 @@ const Model = use('Model');
 /** @type {import('@adonisjs/framework/src/Hash')} */
 const Hash = use('Hash');
 
+const Env = use('Env');
+
 class User extends Model {
   static boot() {
     super.boot();
@@ -39,6 +41,14 @@ class User extends Model {
 
   static get hidden () {
     return ['password', 'created_at', 'updated_at']
+  }
+
+  static get computed () {
+    return ['avatar_url']
+  }
+
+  getAvatarUrl({ avatar }) {
+    return `${Env.get('APP_URL')}/files/${avatar}`
   }
 }
 

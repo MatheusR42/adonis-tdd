@@ -6,7 +6,7 @@ const Workshop = use('App/Models/Workshop');
 class WorkshopController {
   async index({ request, response }) {
     const workshops = await Workshop.query().with('user', builder => {
-      builder.select(['id', 'name'])
+      builder.select(['id', 'name', 'avatar'])
     }).fetch();
 
     return workshops;
@@ -14,6 +14,7 @@ class WorkshopController {
 
   async show({ params }) {
     const workshop = await Workshop.find(params.id);
+    //quando é um unico usamos o load
     await workshop.load('user');
     return workshop;
   }
