@@ -25,4 +25,5 @@ Route.group(() => {
   Route.get('/workshops/:id', 'WorkshopController.show');
   Route.post('/workshops', 'WorkshopController.store').validator('Workshop');
   Route.put('/workshops/:id', 'WorkshopController.update').validator('Workshop');
+  Route.delete('/workshops/:id', 'WorkshopController.destroy');
 }).middleware('auth');
