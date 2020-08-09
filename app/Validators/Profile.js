@@ -8,6 +8,8 @@ class Profile {
 
   get rules () {
     return {
+      name: 'required',
+      password: 'confirmed',
       avatar: 'required|file|file_ext:png,gif,jpg,jpeg,tiff,bmp|file_size:2mb|file_types:image'
     }
   }
