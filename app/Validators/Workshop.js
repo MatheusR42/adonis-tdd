@@ -11,7 +11,7 @@ class Workshop {
     return {
       title: [rule('required')],
       description: [rule('required')],
-      user_id: [rule('required'), rule('exists', ['users', 'id'])],
+      user_id: [rule('exists', ['users', 'id'])],
       section: [rule('required'), rule('in', [1, 2, 3])],
     };
   }

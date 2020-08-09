@@ -57,3 +57,22 @@ test('it should to list a single workshop', async ({ client, assert }) => {
   assert.equal(response.body.title, workshop.title);
   assert.equal(response.body.user.id, user.id);
 });
+
+test('it should to update a workshop', async ({ client, assert }) => {
+  const user = await Factory.model('App/Models/User').create();
+  const workshop = await Factory.model('App/Models/Workshop').create({
+    title: 'Old Title'
+  });
+
+  const response = await client
+    .put('/workshops/'+workshop.id)
+    .loginVia(user, 'jwt')
+    .send({
+      ...workshop.toJSON(),
+      title: 'New Title'
+    })
+    .end();
+
+  response.assertStatus(200);
+  assert.equal(response.body.title, 'New Title');
+});

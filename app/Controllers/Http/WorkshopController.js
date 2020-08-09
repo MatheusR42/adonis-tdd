@@ -5,9 +5,11 @@ const Workshop = use('App/Models/Workshop');
 
 class WorkshopController {
   async index({ request, response }) {
-    const workshops = await Workshop.query().with('user', builder => {
-      builder.select(['id', 'name', 'avatar'])
-    }).fetch();
+    const workshops = await Workshop.query()
+      .with('user', (builder) => {
+        builder.select(['id', 'name', 'avatar']);
+      })
+      .fetch();
 
     return workshops;
   }
@@ -25,6 +27,18 @@ class WorkshopController {
     const workshop = await Workshop.create(data);
 
     return response.status(201).json(workshop);
+  }
+
+  async update({ request, params }) {
+    const data = request.only(['title', 'description', 'user_id', 'section']);
+
+    const workshop = await Workshop.find(params.id);
+
+    workshop.merge(data);
+
+    await workshop.save();
+
+    return workshop;
   }
 }
 
