@@ -11,11 +11,14 @@ class ProfilleController {
       size: '2mb'
     });
 
-    await avatar.move(Helpers.tmpPath('uploads'), {
-      name: `${new Date().getTime()}.${avatar.subtype}`
-    })
+    if (avatar) {
+      await avatar.move(Helpers.tmpPath('uploads'), {
+        name: `${new Date().getTime()}.${avatar.subtype}`
+      })
 
-    user.avatar = avatar.fileName;
+      user.avatar = avatar.fileName;
+    }
+
     await user.save();
 
     return user;
