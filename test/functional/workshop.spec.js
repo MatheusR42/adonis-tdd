@@ -32,12 +32,15 @@ test('it should to list the workshops', async ({ client, assert }) => {
   const user = await Factory.model('App/Models/User').create();
 
   //make create the instance but do not insert in db
-  const workshop = await Factory.model('App/Models/Workshop').make();
+  const workshop = await Factory.model('App/Models/Workshop').make({
+    section: 2
+  });
 
   await user.workshops().save(workshop);
 
   const response = await client
     .get('/workshops')
+    .query({ section: 2 })
     .loginVia(user, 'jwt')
     .end();
 
