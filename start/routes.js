@@ -34,4 +34,9 @@ Route.group(() => {
     '/workshops/:workshop_id/subscriptions',
     'SubscriptionController.store'
   );
+
+  Route.delete(
+    '/workshops/:workshop_id/subscriptions',
+    'SubscriptionController.destroy'
+  );
 }).middleware('auth');
