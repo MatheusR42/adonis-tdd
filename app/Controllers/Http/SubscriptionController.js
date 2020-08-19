@@ -14,12 +14,16 @@ class SubscriptionController {
       .first();
 
     if (checkSubscription) {
-      return response
-        .status(400)
-        .json({
-          error:
-            'You cannot subscribe to more than one workshop in the same section',
-        });
+      return response.status(400).json({
+        error:
+          'You cannot subscribe to more than one workshop in the same section.',
+      });
+    }
+
+    const countSubscriptions = await workshop.subscriptions().count();
+
+    if (countSubscriptions[0]['count(*)'] === 48) {
+      return response.status(400).json({ error: 'The workshop is full.' });
     }
 
     await user.subscriptions().attach(workshop_id);
