@@ -21,9 +21,17 @@ Route.post('/reset', 'ResetPasswordController.store').validator('Reset');
 
 Route.group(() => {
   Route.put('/profile', 'ProfileController.update').validator('Profile');
+
   Route.get('/workshops', 'WorkshopController.index');
   Route.get('/workshops/:id', 'WorkshopController.show');
   Route.post('/workshops', 'WorkshopController.store').validator('Workshop');
-  Route.put('/workshops/:id', 'WorkshopController.update').validator('Workshop');
+  Route.put('/workshops/:id', 'WorkshopController.update').validator(
+    'Workshop'
+  );
   Route.delete('/workshops/:id', 'WorkshopController.destroy');
+
+  Route.post(
+    '/workshops/:workshop_id/subscriptions',
+    'SubscriptionController.store'
+  );
 }).middleware('auth');

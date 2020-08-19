@@ -36,19 +36,25 @@ class User extends Model {
   }
 
   workshops() {
-    return this.hasMany('App/Models/Workshop')
+    return this.hasMany('App/Models/Workshop');
   }
 
-  static get hidden () {
-    return ['password', 'created_at', 'updated_at']
+  subscriptions() {
+    return this.belongsToMany('App/Models/Workshop')
+      .pivotTable('subscriptions')
+      .withTimestamps();
   }
 
-  static get computed () {
-    return ['avatar_url']
+  static get hidden() {
+    return ['password', 'created_at', 'updated_at'];
+  }
+
+  static get computed() {
+    return ['avatar_url'];
   }
 
   getAvatarUrl({ avatar }) {
-    return `${Env.get('APP_URL')}/files/${avatar || 'avatar-placeholder.gif'}`
+    return `${Env.get('APP_URL')}/files/${avatar || 'avatar-placeholder.gif'}`;
   }
 }
 
