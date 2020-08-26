@@ -20,6 +20,7 @@ Route.post('/forgot', 'ForgotPasswordController.store').validator('Forgot');
 Route.post('/reset', 'ResetPasswordController.store').validator('Reset');
 
 Route.group(() => {
+  Route.get('/profile', 'ProfileController.show');
   Route.put('/profile', 'ProfileController.update').validator('Profile');
 
   Route.get('/workshops', 'WorkshopController.index');

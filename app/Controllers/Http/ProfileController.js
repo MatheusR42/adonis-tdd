@@ -3,6 +3,12 @@
 const Helpers = use('Helpers');
 
 class ProfilleController {
+  async show({ auth }) {
+    const user = await auth.getUser();
+
+    return user;
+  }
+
   async update({ request, auth }) {
     const data = request.only(['name', 'title', 'bio', 'github', 'linkedin']);
 
